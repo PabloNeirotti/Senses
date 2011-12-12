@@ -1,0 +1,81 @@
+**                                                                     **
+*                              S E N S E S                              *
+*                           multimedia player                           *
+*                                                                       *
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*                                                                       *
+*  Senses is under Pixelsize Public License.                            *
+*  More information at http://pixelsize.net/artise/support/license/     *
+*                                                                       *
+*  Author: Pablo Neirotti                                               *
+*  More information at http://artpulse.me/                              *
+*                                                                       *
+ 
+ 
+Senses is a decentralized HTML5 multimedia player. You can try it out at
+http://senses.artpulse.me/
+
+
+*** Index ***
+
+1. Technical info
+2. Information
+3. Roadmap
+
+
+
+*** 1. Technical info ***
+
+Senses is made of two parts:
+
+- Server side: which can play two roles:
+	- Build the initial HTML page with the required CSS and JS info
+	  (official site only).
+	- Provide the access to the media library and content.
+
+- Client side: the player itself.
+
+
+The server side runs on Pixelsize Artise, Beta release. More information
+can be found at http://pixelsize.net/artise/
+
+The client side runs a custom engine with a piece of an experimental,
+non-official Artise platform that simply prints Palettes. Used to
+display dynamic listings.
+
+
+
+*** 2. Information ***
+
+Senses is a HTML5 multimedia player, which aims to connect to several
+servers to retrieve different sources of media, and stay as an
+open-sourced project.
+
+
+What's decentralized?
+
+The Senses player is one thing, but the Senses server is a separate part
+of the project. There can technically be many servers (which are media
+resources) that can be appended to your player. That means no one is the
+sole owner of the content you watch. That means there can be no "media
+control".
+The project needs a hand to pull this off, source-code wise.
+
+
+Creative-Commons fueled
+
+The contents you will find on the official media repository is full with
+free, public domain or Creative-Commons licensed media. Because the
+project bets on the new media distribution paradigm, where media is a
+commodity, not a good to sell. We encourage media creators to make money
+off limited edition releases, merchandise, donations and so on. But not
+limit anyone to appreciate their creative pieces.
+
+
+
+*** 3. Roadmap ***
+
+- Continuous playing
+- Settings support
+- Multiple media sources support
+- Next media pre-buffer
