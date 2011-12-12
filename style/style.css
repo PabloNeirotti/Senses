@@ -1,0 +1,124 @@
+/**                                                                     **
+ *                              S E N S E S                              *
+ *                           multimedia player                           *
+ *                                                                       *
+ *                     m a i n   s t y l e s h e e t                     *
+ *                                                                       *
+ *                                                                       *
+ *                                                                       *
+ *  Main-up stuff... You'll get it when you grow mainer...               *
+ *                                                                       *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                                                                       *
+ *  Senses is under Pixelsize Public License.                            *
+ *  More information at http://pixelsize.net/artise/support/license/     *
+ *                                                                       *
+ *  Author: Pablo Neirotti                                               *
+ *  More information at http://artpulse.me/                              *
+ *                                                                       */
+
+body {
+	background: no-repeat center center #000000;
+	font-family: "Myriad Pro", Helvetica, Arial, sans-serif;
+	color: #ffffff;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	cursor: none;
+}
+
+a {
+	color: inherit;
+}
+
+@font-face {
+	font-family: 'Myriad Pro';
+	src: url('../fonts/MyriadPro-Regular.otf');
+	font-weight: normal;
+}
+
+
+
+
+/*** Animations ***/
+
+.zoom-in {
+	-webkit-animation-duration: .3s; /* Default value */
+	-webkit-animation-name: zoomIn;
+	-webkit-animation-timing-function: ease-out;
+	opacity: 1 !important;
+}
+
+.zoom-out {
+	-webkit-animation-duration: .3s; /* Default value */
+	-webkit-animation-name: zoomOut;
+	-webkit-animation-timing-function: ease-out;
+	opacity: 0 !important;
+}
+
+.fade-in {
+	-webkit-animation-duration: .3s; /* Default value */
+	-webkit-animation-name: fadeIn;
+	-webkit-animation-timing-function: ease-out;
+	opacity: 1 !important;
+}
+
+.fade-out {
+	-webkit-animation-duration: .3s; /* Default value */
+	-webkit-animation-name: fadeOut;
+	-webkit-animation-timing-function: ease-out;
+	opacity: 0 !important;
+}
+
+@-webkit-keyframes zoomIn {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale3d(2, 2, 1);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: scale3d(1, 1, 1);
+	}
+}
+
+@-webkit-keyframes zoomOut {
+	0% {
+		opacity: 1;
+		-webkit-transform: scale3d(1, 1, 1);
+	}
+	100% {
+		opacity: 0;
+		-webkit-transform: scale3d(.5, .5, 1);
+	}
+}
+
+@-webkit-keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+@-webkit-keyframes fadeOut {
+	0% { opacity: 1; }
+	100% { opacity: 0; }
+}
+
+
+
+@-webkit-keyframes centerNotif {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale(2, 2, 1);
+	}
+	20% {
+		opacity: 1;
+		-webkit-transform: scale(1, 1, 1);
+	}
+	80% {
+		opacity: 1;
+		-webkit-transform: scale(1, 1, 1);
+	}
+	100% {
+		opacity: 0;
+		-webkit-transform: scale(0.5, .5, 1);
+	}
+}

@@ -1,0 +1,4 @@
+<ul class="filter-bar">
+	<!--block:item--><li id="%id">%caption</li><!--/block-->
+	<!--block:item_active--><li id="%id" class="active">%caption</li><!--/block-->
+</ul>

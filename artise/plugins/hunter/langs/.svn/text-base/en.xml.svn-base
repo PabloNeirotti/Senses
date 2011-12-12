@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<lang>
+	<phrases>
+	
+		<method_name>ucf[w[method:1]] %name</method_name>
+		<line_number>ucf[w[line:1]] %number</line_number>
+		<call_name>ucf[w[call:1]] to %name</call_name>
+		
+		<method>Method</method>
+		
+		<close>Close</close>
+		
+		
+		
+		<file_path>File: %path</file_path>
+		<file_path_abstract><![CDATA[<span class="soft">%path</span>%filename]]></file_path_abstract>
+		
+		<namespace_path_abstract><![CDATA[<span class="soft">%path</span>%filename]]></namespace_path_abstract>
+		
+		
+
+		<!--  Artise Errors  -->
+
+		<E0001>This is a protected method, you shouldn't try to execute it</E0001>
+		<E0002>default.php file does not exist</E0002>
+		<E0003>The configuration file contains XML errors.</E0003>
+		<E0004>The variable or requested group is incorrect.</E0004>
+		<E0005>The requested method was declared as Private.</E0005>
+		
+		<E0007>Unexpected datatype: a string or number should have been provided</E0007>
+		<E0008>Callback is not a function</E0008>
+		<E0009>The Plugin '%plugin' does not have a main file.</E0009>
+		<E0010>The Plugin '%plugin' does not exist.</E0010>
+		<E0011>No Layout has been set on the Page's Body.</E0011>
+		<E0012>The Layout file does not exist or can't be accessed</E0012>
+		<E0013>\Art::startPoint was used on a Standard request, or was incorrectly used</E0013>
+		<E0014>Wrong start point. Expecting LAYOUT or PALETTE</E0014>
+		<E0015>You have set more than once a zone variable</E0015>
+		<E0016>The zone has no Layout assigned yet</E0016>
+		<E0017>The zone does not exist in the specified Layout</E0017>
+		<E0018>Non-Plugin class extending the Plugin class</E0018>
+		<E0019>The Painter file does not exist or can't be accessed</E0019>
+		<E0020>Can't continue on the provided Brush namespace because it doesn't exists</E0020>
+		<E0021>This method can't be used if you don't create a Brush namespace first</E0021>
+		<E0022>Target Zone was not defined</E0022>
+		<E0023>The requested method for the Painter was declared as Private</E0023>
+		<E0024>The requested method for the Painter does not exist</E0024>
+		<E0025>El valor de la variable ingresada debe ser numero o cadena</E0025>
+		<E0026>The specified Palette does not exist</E0026>
+		<E0027>The file you tried to attach does not exist</E0027>
+		<E0028>The file you tried to attach was already attached</E0028>
+		<E0029>The value of the provided variable should be a string or number</E0029>
+		<E0030>The language file does not exist or can't be accessed</E0030>
+		<E0031>There language file contains XML syntax errors</E0031>
+		<E0032>Language file is missing phrases and words groups.</E0032>
+		<E0033>The Palette contains syntax errors.</E0033>
+			<E0034>The phrase does not exist</E0034>
+		<E0035>The provided constant is not a valid zone to insert content into</E0035>
+		<E0036>The requested Block does not exist</E0036>
+		<E0037>Callback is not a function</E0037>
+		<E0038>The phrase '%phrase' has been defined more than once</E0038>
+		<E0039>The router file is missing</E0039>
+		<E0040>The router file can not be accessed</E0040>
+		
+		<E0041>Failed to access method '%method' of an empty object</E0041>
+		<E0042>Failed to access property '%property' of an empty object</E0042>
+		<E0043>Failed to assign a value to property '%property' of an empty object</E0043>
+		
+		<E0050>The w[%element:1] file does not exist.</E0050>
+		<E0051>The w[%element:1] file is not accessible.</E0051>
+		<E0052>The %element '%name' cannot be obtained.</E0052>
+		<E0053>The %element '%name' was not found.</E0053>
+		
+		<E0060>The '%name' was not defined as %element, therefore it will not be executed.</E0060>
+		
+		
+		
+		
+		<!-- Artise Warnings -->
+		
+		<W0001>The router contains an invalid rule.</W0001>
+		<W0002>The router contains a rule with an invalid Procedure.</W0002>
+		<W0003>Wrong type passed to function.</W0003>
+		<W0004>The phrase '%phrase' has been defined more than once.</W0004>
+		<W0005>The word '%word' does not have any genre form defined.</W0005>
+		<W0006>The word '%word' does not have any numeral form defined.</W0006>
+		<W0007>Artise is in fallback mode.</W0007>
+		
+		<W0010>An event listener must have the 'event' defined.</W0010>
+		<W0011>An event listener must have the 'callback' defined.</W0011>
+		<W0012>The expression '%expression' is not a valid Event.</W0012>
+		<W0013>Failed to Listen to Plugin '%plugin', as it does not exist.</W0013>
+		
+		<W0050>The w[%element:1] file was never specified.</W0050>
+		
+		
+		
+		
+		<!-- Artise Errors & Warnings descriptions -->
+		
+		<DESC_E0041><![CDATA[There was a problem returning an object in the first place when calling <strong>%call</strong>. This is a dummy object or instance, not the real one.]]></DESC_E0041>
+		<DESC_E0045>The %element exists, but failed loading.</DESC_E0045>
+		
+		
+		<DESC_W0001_a>The rule was defined with no URL</DESC_W0001_a>
+		<DESC_W0001_b>The rule is neither linked to a Render nor Procedure</DESC_W0001_b>
+		<DESC_W0003>Argument %arg provided as %type instead of %valid_types</DESC_W0003>
+		<DESC_W0003>Argument %arg provided as %type instead of %valid_types</DESC_W0003>
+		<DESC_W0007_A>Using fallback Configuration file.</DESC_W0007_A>
+
+
+
+		<!-- Artise Errors & Warnings tips -->
+
+		<TIP_E0004>Remember to provide the full path to a variable, i.e: "my_group:variable"</TIP_E0004>
+		<TIP_E0005>You should define the method as public</TIP_E0005>
+		<TIP_E0006>You should define the method as public</TIP_E0006>
+		<TIP_E0007>You should check how the information is processed up to the point the function is called</TIP_E0007>
+		<TIP_E0008>Remember that Callbacks can only be strings or extensions of the \Closure class</TIP_E0008>
+		<TIP_E0009>All Plugins must have a .php file named after the plugin (myplugin.php), containing a 'class Main' located at the Plugin's namespace: \Plugins\myplugin</TIP_E0009>
+		<TIP_E0010>Check wether you have mispelled the name of the Plugin, or the Plugin is simply not in the Plugins folder: /artise/plugins/</TIP_E0010>
+		<TIP_E0011>To assign a Layout to a Page's body from a Render, use the following code: $this->body()->layout(path_here), where 'path_here' is the simple path to the Layout.</TIP_E0011>
+		<TIP_E0012>Remember that Layout files must have a .html extension. Also, check if the filename and the call match!</TIP_E0012>
+		<TIP_E0013>Open the site's configuration file 'config.xml' and verify it is consistent with the XML format. Make sure all opened tags are closed.</TIP_E0013>
+		<!-- <TIP_E0014></TIP_E0014> -->
+		<!-- <TIP_E0015></TIP_E0015> -->
+		
+		<TIP_E0017>You should check the HTML code of the Layout file</TIP_E0017>
+		<TIP_E0018>Only Plugins Main classes can extend the \Ext\Plugin class. Make sure you are unnecessarily extending the Plugin class on other class definitions at the Plugin.</TIP_E0018>
+		<TIP_E0019>The file might not have enough reading permissions, or that it doesn't even exist</TIP_E0019>
+		<TIP_E0020>To continue a Brush namespace you must first create it with \Art::createNS() and store the returned Id in a variable</TIP_E0020>
+		<TIP_E0021>A Brush namespace can be created with the \Art::createNS() method. The Id is returned for you to save it in a variable</TIP_E0021>
+		<!-- <TIP_E0022></TIP_E0022> -->
+		<TIP_E0023>You should set the method as Public</TIP_E0023>
+		<TIP_E0024>If you have already created it, check if the names actually match!</TIP_E0024>
+		<TIP_E0025>You should check how the information is processed up to the point the function is called</TIP_E0025>
+		<TIP_E0026>Remember that Palette files must have a .html extension. Also, check if the filename and the call match!</TIP_E0026>
+		<!-- <TIP_E0027></TIP_E0027> -->
+		<!-- <TIP_E0028></TIP_E0028> -->
+		<TIP_E0029>You should check how the information is processed up to the point the function is called</TIP_E0029>
+		<TIP_E0030>Remember that Language files must have a .xml extension</TIP_E0030>
+		<TIP_E0031>Open the language file and verify it is consistent with the XML format. Make sure all opened tags are closed.</TIP_E0031>
+		<TIP_E0032>No matter wether you will or not use Phrases and/or Words, you must define both groups inside the &lt;lang&gt; ... &lt;/lang&gt; tag.</TIP_E0032>
+		<TIP_E0033><![CDATA[Make sure that all blocks are closed. Also that you did not mispell the tag. The correct syntax is the following: <strong><!--/block--></strong>]]></TIP_E0033>
+		<TIP_E0034>Idioms are definitions. Make sure you are calling a definition, that the definition exists and that you've written the name exactly the same way as the definition.</TIP_E0034>
+		<TIP_E0035>You have to either provide SITE_TOP or SITE_BOTTOM as places to print content</TIP_E0035>
+		<TIP_E0036>Don't freak out if the Palette does not seem to be printed! If Artise finds out that a requested block does not exist, it simply doesn't print anything on the Painter token</TIP_E0036>
+		<TIP_E0037>Remember that Callbacks can only be strings or extensions of the \Closure class</TIP_E0037>
+		<TIP_E0038>All definitions have to have an unique name</TIP_E0038>
+		
+		<TIP_E0041>When something goes wrong while fetching an instance or other object - usually referential - a dummy object is returned for PHP not to throw an error. It is most likely that, the reason why you were returned a dummy object, is also in this Hunter log.</TIP_E0041>
+		
+		<TIP_E0045>Check the other log entries to figure out what went wrong, and why this element failed loading.</TIP_E0045>
+		
+		<TIP_E0050>Check if you have mispelled the path, and that the route is correct. Also, make sure the file exists. And do not forget that on Artise we use simple paths, that is: everything relative to the component directory and no extension, so instead of writing "/artise/design/layouts/structure/myLayout.html", you simply write "structure/myLayout".</TIP_E0050>
+		<TIP_E0051>When a file is not accesible it means Artise tried to open or edit a file with not enough permissions. Set the permissions for both, containing folder and file, to 0755.</TIP_E0051>
+		
+		
+		
+		<TIP_W0005>A word must contain at least one genre. The default one is the Neutral form: &lt;n&gt; ... &lt;/n&gt;. Inside a Genre tag is where numerals: Null, Single and Plural should be defined.</TIP_W0005>
+		<TIP_W0006>A word must contain at least one genre, containing at least one numeral form. The default one is the Null form: &lt;n&gt; ... &lt;/n&gt;. The Null form of the word should be defined in the content of the tags.</TIP_W0006>
+		<TIP_W0007>Artise goes into Fallback mode when some of the key parts for normal execution are missing or failing. Verify if your configuration file is valid and complete.</TIP_W0007>
+		
+		<TIP_W0010>Inside an event listener declaration tag, an 'event' tag must be defined, with a property called 'value' containing the absolute path to the event. In example: 'plugins:plugin_i_want_to_listen:some_method'. Remember this is where you define the event you want to listen to.</TIP_W0010>
+		<TIP_W0011>Inside an event listener declaration tag, a 'callback' tag must be defined, with a property called 'value' containing the name of our plugin's method which is going to be used as callback..</TIP_W0011>
+		<TIP_W0012>Make sure the first part of the expression refers to a valid group of events. In example: 'env:...' or 'plugins:...'.</TIP_W0012>
+		
+		<TIP_W0050>You forgot to set the file path for this component!</TIP_W0050>
+		<TIP_W0051>You forgot to set the file path for the Layout! If you do not wish to use a Zone, you can simply use the Zone->clear() method. It will remove the Zone from the HTML without the need of inserting a Layout in it.</TIP_W0051>
+		
+		<TIP_W0053>Make sure the namespace path of the Component matches the folder hierarchy, and the class name matches the file name. For example: ucf[%component] hosted at 'code/%component/navigation/test.php' must have a 'test' class defined in a '%components/navigation' namespace.</TIP_W0053>
+		
+		<TIP_E0060_A>Actions must be defined by extending the \Ext\Action class. For example: 'class MyAction extends \Ext\Action { ... }'</TIP_E0060_A>
+		
+	</phrases>
+	
+	<words>
+		
+		
+		<!-- Trace steps properties -->
+		
+		<file>
+			<n>
+				<n>files</n>
+				<s>file</s>
+				<p>files</p>
+			</n>
+		</file>
+		
+		<line>
+			<n>
+				<n>lines</n>
+				<s>line</s>
+				<p>lines</p>
+			</n>
+		</line>
+		
+		<class>
+			<n>
+				<n>classes</n>
+				<s>class</s>
+				<p>classes</p>
+			</n>
+		</class>
+		
+		<method>
+			<n>
+				<n>methods</n>
+				<s>method</s>
+				<p>methods</p>
+			</n>
+		</method>
+		
+		<function>
+			<n>
+				<n>functions</n>
+				<s>function</s>
+				<p>functions</p>
+			</n>
+		</function>
+		
+		<call>
+			<n>
+				<n>calls</n>
+				<s>call</s>
+				<p>calls</p>
+			</n>
+		</call>
+		
+		
+		<!-- Elements -->
+		
+		<configuration>
+			<n>
+				<n>configurations</n>
+				<s>configuration</s>
+				<p>configuration</p>
+			</n>
+		</configuration>
+		
+		
+		
+		<!-- Error types -->
+
+		<warning>
+			<n>
+				<n>warnings</n>
+				<s>warning</s>
+				<p>warnings</p>
+			</n>
+		</warning>
+		<error>
+			<n>
+				<n>errors</n>
+				<s>error</s>
+				<p>errors</p>
+			</n>
+		</error>
+		<flag>
+			<n>
+				<n>flags</n>
+				<s>flag</s>
+				<p>flags</p>
+			</n>
+		</flag>
+		<all>
+			<n>
+				<n>none</n>
+				<s>one</s>
+				<p>all</p>
+			</n>
+		</all>
+	</words>
+</lang>

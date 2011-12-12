@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<lang>
+	<phrases>
+		<SENSES_E0001>Media->checkSetProperties failed to get properties from database</SENSES_E0001>
+		<SENSES_E0002>The media type does not exist.</SENSES_E0002>
+	</phrases>
+	
+	<words>
+		
+	</words>
+</lang>

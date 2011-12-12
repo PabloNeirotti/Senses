@@ -1,0 +1,18 @@
+#Starts at Environment
+DirectoryIndex artise/environment/init.php
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	
+	RewriteCond %{REQUEST_URI} ^.*[^/]$
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^(.*)$ /$1/ [L,R]
+	
+#	RewriteCond %{HTTP_HOST} !^pixelsize\.net$ [NC]
+#	RewriteRule ^(.*)$ http://pixelsize.net/$1 [R=301,L]
+	
+	RewriteBase /
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule . /artise/environment/init.php [L]
+	RewriteRule ^xml\/.+\.xml$ / [R,NC,L]
+</IfModule>

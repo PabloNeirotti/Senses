@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<lang>
+	<phrases>
+		<!-- User definition : Media names -->
+		<media_music>Music</media_music>
+		<media_videos>Videos</media_videos>
+		<media_shows>Shows</media_shows>
+		<media_movies>Movies</media_movies>
+	</phrases>
+	
+	<words>
+	</words>
+</lang>

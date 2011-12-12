@@ -1,0 +1,247 @@
+/**                                                                     **
+ *                              S E N S E S                              *
+ *                           multimedia player                           *
+ *                                                                       *
+ *              m e d i a   p l a y e r   s t y l e s h e e t            *
+ *                                                                       *
+ *                                                                       *
+ *                                                                       *
+ * Players, progress bars, indicators and else.                          *
+ *                                                                       *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                                                                       *
+ *  Senses is under Pixelsize Public License.                            *
+ *  More information at http://pixelsize.net/artise/support/license/     *
+ *                                                                       *
+ *  Author: Pablo Neirotti                                               *
+ *  More information at http://artpulse.me/                              *
+ *                                                                       */
+
+
+/* Players */
+
+#player audio {
+	display: none;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+#player video {
+	width: 100%;
+	height: 100%;
+}
+
+
+/* License */
+
+#license {
+	position: fixed;
+	right: 1.2em;
+	bottom: 1em;
+	padding: 10px 0 10px 40px;
+	background-repeat: no-repeat;
+	background-position: left center;
+	opacity: 0;
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	-webkit-animation-duration: 6s;
+	-webkit-animation-timing-function: linear;
+}
+
+#license.cc {
+	background-image: url(/graphics/licenses/cc-small.png);
+}
+
+@-webkit-keyframes license-animation {
+	from {
+		opacity: 0;
+	}
+	5% {
+		opacity: .6;
+	}
+	60% {
+		opacity: .6;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+
+/* Progress Bar */
+
+#progress-bar {
+	position: fixed;
+	bottom: 80px;
+	z-index: 20;
+	width: 100%;
+	opacity: 0;
+	-webkit-transition: opacity 1s ease-out;
+}
+
+#progress-bar.show {
+	opacity: 1;
+	-webkit-transition: opacity .2s ease-out;
+}
+
+#progress-bar > .bar {
+	position: relative;
+	display: block;
+	width: 400px;
+	height: 16px;
+	margin: 0 auto;
+	border: 1px solid rgba(255,255,255,.75);
+	box-shadow: 0 0 3px rgba(255, 255, 255, .4);
+	border-radius: 10px;
+	background-image: -moz-linear-gradient(90deg, rgba(0, 0, 0, 0.37) 0%, rgba(0, 0, 0, 0.71) 100%);
+	background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.37)), to(rgba(0, 0, 0, 0.71)));
+}
+
+#progress-bar > .bar > .buffer {
+	position: absolute;
+	display: block;
+	min-width: 16px;
+	height: 16px;
+	left: 0;
+	top: 0;
+	border-radius: 10px;
+	-webkit-transition: all .2s ease-out;
+	background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(11, 117, 254, 0.59)), to(rgba(10, 52, 196, 0.36)));
+	background-image: -moz-linear-gradient(90deg, rgba(11, 117, 254, 0.59) 0%, rgba(10, 52, 196, 0.36) 100%);
+	box-shadow: inset 0 0 2px #2ea4ff;
+}
+
+#progress-bar > .bar > .buffer.done {
+	opacity: 0;
+	-webkit-animation: buffer-done-shine 2s ease-in-out .2s;
+}
+
+@-webkit-keyframes buffer-done-shine {
+	from {
+		box-shadow: inset 0 0 2px #2ea4ff, 0 0 5px rgba(255, 255, 255, .0);
+		opacity: 1;
+	}
+	20% {
+		box-shadow: inset 0 0 2px #fff, 0 0 5px white;
+		opacity: 1;
+	}
+	50% {
+		box-shadow: inset 0 0 2px #fff, 0 0 5px white;
+		opacity: 1;
+	}
+	to {
+		box-shadow: inset 0 0 2px #fff, 0 0 5px white;
+		opacity: 0;
+	}
+}
+
+
+#progress-bar > .bar > .position {
+	position: absolute;
+	z-index: 30;
+	display: block;
+	width: 12px;
+	height: 12px;
+	left: 2px;
+	top: 2px;
+	border-radius: 8px;
+	background: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0.57) 0%, rgba(255, 255, 255, 0.86) 100%) rgba(255,255,255,.7);
+	-webkit-transition: left .2s ease-out;
+	background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.57)), to(rgba(255, 255, 255, 0.86))) rgba(255,255,255,.7);
+}
+
+
+
+/* Audio screen */
+
+#audio-screen {
+	position: fixed;
+	bottom: 0;
+	height: 80%;
+	width: 100%;
+	opacity: 0;
+	text-align: center;
+	-webkit-transform: scale3d(0, 0, 1);
+	-webkit-transition: all .7s ease-in-out 0s;
+}
+
+#surface.action-playing-audio #audio-screen {
+	opacity: 1;
+	-webkit-transform: scale3d(1, 1, 1);
+}
+
+#audio-screen > img.artist-thumb {
+	height: 70%;
+	border-radius: 10px;
+	-webkit-box-reflect:below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.7, transparent), to(rgba(0, 0, 0, .3)));
+}
+
+
+/* Notifications */
+
+#playback-notif {
+	position: fixed;
+	bottom: 0;
+	z-index: 200;
+	width: 100%;
+	height: 50%;
+	opacity: 0;
+	text-align: center;
+	-webkit-animation-duration: 1.2s;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-transform-origin: center top;
+}
+
+#playback-notif > .icon {
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	margin-top: -75px;
+	background: rgba(0,0,0,.5) no-repeat center center;
+	border-radius: 14px;
+}
+
+#playback-notif.pause > .icon {
+	background-image: url(/graphics/playback-notif/pause.svg);
+}
+
+#playback-notif.play > .icon {
+	background-image: url(/graphics/playback-notif/play.svg);
+}
+
+@-webkit-keyframes active-notification {
+	0% {
+		opacity: 0;
+		-webkit-transform:scale3d(2, 2, 1);
+	}
+	10% {
+		opacity: 1;
+		-webkit-transform:scale3d(1, 1, 1);
+	}
+	80% {
+		opacity: 1;
+		-webkit-transform:scale3d(1, 1, 1);
+	}
+	100% {
+		opacity: 0;
+		-webkit-transform:scale3d(1, 1, 1);
+	}
+}
+
+#loading-notif {
+	position: fixed;
+	z-index: 500;
+	width: 50px !important;
+	height: 50px !important;
+	background: url(/graphics/loader.gif) no-repeat center center #000000;
+	border-radius: 10px;
+	opacity: 0;
+	-webkit-transition: opacity .6s ease-in-out 0s;
+}
+
+#loading-notif.show {
+	opacity: 1;
+	-webkit-transition: opacity .3s ease-in-out 0s;
+}

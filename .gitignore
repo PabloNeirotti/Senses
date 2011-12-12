@@ -1,0 +1,4 @@
+library/*
+!.gitignore
+.DS_Store
+*.esproj

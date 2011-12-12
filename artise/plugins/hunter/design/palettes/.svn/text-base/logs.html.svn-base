@@ -1,0 +1,25 @@
+<div class="logList">
+	<!--block:entry--><div class="%log_type">
+		<!--block:thumb-->
+		<div class="thumb">
+			<img src="/artise/plugins/hunter/resources/images/components/%component.png" alt="%component" />
+			<span class="name"><span class="capitalized">%component</span> %name</span>
+			<!--block:method--><span><span class="soft">@method</span> %method</span><!--/block-->
+			<!--block:call--><span class="tab">%call</span><span class="tab soft">%line</span><!--/block-->
+		</div>
+		<!--/block-->
+		<!--block:data-->
+		<div class="data">
+			<h2>%title</h2>
+			<p>%desc</p>
+			<!--block:tip-->
+			<div class="tip">
+				<button class="darkGlass">TIP</button>
+				<div class="content">%content</div>
+			</div>
+			<!--/block-->
+			<div class="type"></div>
+		</div>
+		<!--/block-->
+	</div><!--/block-->
+</div>

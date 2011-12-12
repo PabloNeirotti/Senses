@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lang>
+	<phrases>
+		<could_not_connect>Could not connect to the MySQL server</could_not_connect>
+		<cnc_recommend>Check the connection data in the config file</cnc_recommend>
+	</phrases>
+
+	<words>
+	</words>
+</lang>

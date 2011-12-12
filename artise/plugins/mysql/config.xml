@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+	<connection>
+		<id></id>
+		<host>localhost</host>
+		<user>root</user>
+		<passwd>miami</passwd>
+		<dbase>senses</dbase>
+		<charset>utf8</charset>
+	</connection>
+</config>

@@ -1,0 +1,388 @@
+/**                                                                     **
+ *                              S E N S E S                              *
+ *                           multimedia player                           *
+ *                                                                       *
+ *          m e d i a   b r o w s i n g   s t y l e s h e e t            *
+ *                                                                       *
+ *                                                                       *
+ *                                                                       *
+ * Includes the navigation and media browsing styles.                    *
+ *                                                                       *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                                                                       *
+ *  Senses is under Pixelsize Public License.                            *
+ *  More information at http://pixelsize.net/artise/support/license/     *
+ *                                                                       *
+ *  Author: Pablo Neirotti                                               *
+ *  More information at http://artpulse.me/                              *
+ *                                                                       */
+
+
+#topBar {
+	width: 100%;
+	padding: 20px;
+	background: rgba(0,0,0,.4);
+	border-bottom: 1px solid rgba(0,0,0,.9);
+}
+#topBar > .title {
+	display: inline-block;
+	font-size: 24px;
+	text-shadow: 0 1px 1px rgba(0,0,0,.5);
+}
+#surface.action-playing-video #topBar > .title:before {
+	content: "Now playing: ";
+	color: #fdaf3d;
+}
+#surface.action-playing-audio #topBar > .title:before {
+	content: "Now listening: ";
+	color: #fdaf3d;
+}
+
+
+
+#ticket-box {
+	position: fixed;
+	top: 0px;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.6);
+	-webkit-animation-duration: 0.3s !important;
+	opacity: 1;
+}
+
+
+/* Main navigation */
+
+#navigation > div.close {
+	-webkit-animation: page-close .3s ease-out;
+}
+
+@-webkit-keyframes page-close {
+	from {
+		opacity: 1;
+		-webkit-transform: scale3d(1, 1, 1);
+	}
+	to {
+		opacity: 0;
+		-webkit-transform: scale3d(0, 0, 1);
+	}
+}
+
+
+/* Library categories */
+
+#navigation > nav.categories {
+	position: fixed;
+	top: 1.5em;
+	left: 1em;
+	font-size: 4em;
+	-webkit-transform: scale3d(.5, .5, 1);
+	-webkit-transform-origin: left top;
+	-webkit-transition: -webkit-transform .3s ease-out;
+}
+
+#navigation > nav.categories.focus {
+	-webkit-transform: scale3d(1, 1, 1);
+}
+
+#navigation > nav.categories > a {
+	display: inline-block;
+	height: 4em;
+	font-family: "Helvetica Neue", Helvetica, Arial;
+	font-weight: 100;
+	color: rgba(255, 255, 255, .5);
+	-webkit-transition: color .2s ease-out;
+	-moz-transition: color .2s ease-out;
+}
+
+#navigation > nav.categories > a.sel {
+	color: rgba(255, 255, 255, 1);
+	text-shadow: 0 0 4px rgba(255, 255, 255, .4);
+	-webkit-transition: color .1s ease-out;
+	-moz-transition: color .1s ease-out;
+}
+
+#navigation > nav.categories > a + a {
+	margin-left: 50px;
+}
+
+
+
+/* Breadcrumbs */
+
+#breadcrumbs {
+	position: fixed;
+	top: 3em;
+	right: 1em;
+	height: 2em;
+	color: rgba(255, 255, 255, .5);
+	font-family: "Myriad Pro", Helvetica, Arial;
+	font-size: 2em;
+	font-weight: 200;
+	text-align: right;
+}
+
+#breadcrumbs > span {
+	display: inline-block;
+	height: inherit;
+}
+
+#breadcrumbs > span + span::before {
+	content: ":";
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#breadcrumbs > span:last-child {
+	color: rgba(255, 255, 255, .8);
+}
+
+
+
+/* Instructions */
+
+#instructions {
+	position: fixed;
+	right: 30px;
+	top: 110px;
+	padding: 10px;
+	border: 1px solid rgba(255, 255, 255, .3);
+	border-radius: 7px;
+	background: rgba(0, 0, 0, .2);
+	color: white;
+	font-size: 14px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .8);
+	opacity: 0;
+}
+
+#instructions.animate {
+	-webkit-animation: instructions-fade-out 15s ease-out 1s;
+}
+
+@-webkit-keyframes instructions-fade-out {
+	from {
+		-webkit-transform: translate3d(100%, 0, 0);
+		opacity: 0;
+	}
+	5% {
+		-webkit-transform: translate3d(0, 0, 0);
+		opacity: 1;
+	}
+	95% {
+		-webkit-transform: translate3d(0, 0, 0);
+		opacity: 1;
+	}
+	to {
+		-webkit-transform: translate3d(100%, 0, 0);
+		opacity: 0;
+	}
+}
+
+
+
+/* Sliding media browser */
+
+.browser.sliding-media {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	display: block;
+	height: 350px;
+	width: 100%;
+	overflow-x: hidden;
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.307, rgba(72, 111, 149, 0.95)), color-stop(0.8, rgba(27, 40, 100, 0)));
+	background-image: -moz-linear-gradient(90deg, rgba(72, 111, 149, 0.95) 30.7%, rgba(27, 40, 100, 0) 80%);
+	opacity: 0;
+	-webkit-transform: scale3d(4, 4, 1);
+	-webkit-transform-origin: center 40%;
+	-webkit-animation: page-open-sliding-media .3s ease-out;
+	-webkit-transition: all .3s ease-in-out;
+}
+
+.browser.sliding-media.poster {
+	height: 450px;
+}
+
+.browser.sliding-media.focus {
+	opacity: 1;
+	-webkit-transform: scale3d(1, 1, 1);
+}
+
+#navigation > .browser.sliding-media.close {
+	opacity: 1;
+	-webkit-transform: scale3d(1, 1, 1);
+	-webkit-animation: page-close-sliding-media .3s ease-in !important;
+}
+
+@-webkit-keyframes page-open-sliding-media {
+	from {
+		-webkit-transform: translate3d(0, 100%, 0);
+	}
+	to {
+		-webkit-transform: translate3d(0, 0, 0);
+	}
+}
+
+@-webkit-keyframes page-close-sliding-media {
+	from {
+		-webkit-transform: translate3d(0, 0, 0);
+	}
+	to {
+		-webkit-transform: translate3d(0, 100%, 0);
+	}
+}
+
+.browser.sliding-media > div {
+	position: absolute;
+	display: block;
+	left: 0;
+	height: 350px;
+	width: 500%;
+	-webkit-transform: translate3d(440px, 0, 0);
+	-webkit-transition: -webkit-transform .2s ease-out;
+}
+
+.browser.sliding-media.poster > div {
+	height: 450px;
+}
+
+.browser.sliding-media > div > div {
+	position: relative;
+	float: left;
+	border-radius: 5px;
+	padding: 10px;
+	width: 200px;
+	height: 230px;
+	background-color: rgba(0, 0, 0, .2);
+	text-align: center;
+	border: 1px solid rgba(255, 255, 255, .2);
+	box-shadow: inset 0 0 4px rgba(194, 244, 254, 0), 0 0 8px rgba(15, 99, 254, 0);
+	-webkit-box-reflect:below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.7, transparent), to(rgba(0, 0, 0, .3)));
+	color: #cccccc;
+	-webkit-transition: all 0.1s ease-out;
+}
+
+.browser.sliding-media.poster > div > div {
+	height: 330px;
+}
+
+.browser.sliding-media > div > div + div {
+	margin-left: 10px;
+}
+
+.browser.sliding-media > div > div > img {
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	background: no-repeat center center;
+	border-radius: 4px;
+}
+
+.browser.sliding-media.poster > div > div > img {
+	width: 200px;
+	height: 300px;
+}
+
+.browser.sliding-media > div > div.sel {
+	border: 1px solid rgba(156, 226, 255, 0.8);
+	box-shadow: inset 0 0 4px rgba(194, 244, 254, .6), 0 0 8px rgb(15, 99, 254);
+	color: #ffffff;
+	background-color: rgba(15, 99, 254, 0.9);
+}
+
+.browser.sliding-media > div > div.sel > img {
+	box-shadow: 0 0 4px rgba(194, 244, 254, .6);
+}
+
+.browser.sliding-media > div > div > .caption {
+	display: inline-block;
+	padding: 3px 10px;
+	height: 16px;
+	font-weight: 400;
+	margin-top: 3px;
+	text-shadow: 0 1px 1px rgba(0,0,0,.5);
+	overflow-y: hidden;
+}
+
+
+
+/* Browser : List */
+
+.browser.list {
+	position: fixed;
+	left: 1em;
+	top: 25%;
+	display: block;
+	height: 75%;
+	width: 65%;
+	overflow-y: hidden;
+	opacity: 0;
+	-webkit-transform: scale3d(4, 4, 1);
+	-webkit-transform-origin: center 40%;
+	-webkit-animation: page-open-sliding-media .3s ease-out;
+	-webkit-transition: all .3s ease-in-out;
+	-webkit-mask-image: -webkit-gradient(linear, left bottom, left top,
+							from(rgba(0,0,0,0)),
+							color-stop(0.15, rgba(0,0,0,1)),
+							color-stop(0.85, rgba(0,0,0,1)),
+							to(rgba(0,0,0,0)));
+}
+
+.browser.list.focus {
+	opacity: 1;
+	-webkit-transform: scale3d(1, 1, 1);
+}
+
+#navigation > .browser.list.close {
+	opacity: 1;
+	-webkit-transform: scale3d(1, 1, 1);
+	-webkit-animation: page-close-sliding-media .3s ease-out;
+}
+
+/* Container */
+.browser.list > div {
+	-webkit-transform: translate3d(0, 80px, 0);
+	-webkit-transition: -webkit-transform .2s ease-out;
+}
+
+/* Item */
+.browser.list > div > div {
+	height: 1.9em;
+	padding: .1em .6em 0;
+	font-size: 30px;
+	border: 1px solid rgba(255, 255, 255, .4);
+	color: white;
+	line-height: 2em;
+	background: -webkit-gradient(linear, left bottom, left top, from(rgba(43, 45, 50, 0.63)), color-stop(0.483, rgba(47, 50, 56, 0.44)), color-stop(0.506, rgba(226, 229, 231, 0.15)), to(rgba(212, 220, 226, 0.34))) rgba(0, 0, 0, .5);
+	background: -moz-linear-gradient(90deg, rgba(43, 45, 50, 0.63) 0%, rgba(47, 50, 56, 0.44) 48.3%, rgba(226, 229, 231, 0.15) 50.6%, rgba(212, 220, 226, 0.34) 100%) rgba(0, 0, 0, .5);
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, .8);
+}
+
+.browser.list > div > div:first-child {
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.browser.list > div > div:last-child {
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.browser.list > div > div + div {
+	margin-top: 5px;
+}
+
+.browser.list > div > div.sel {
+	border: 1px solid rgba(156, 226, 255, 0.8);
+	box-shadow: inset 0 0 4px rgba(194, 244, 254, .6), 0 0 8px rgb(15, 99, 254);
+	color: #ffffff;
+	background-image: -webkit-gradient(linear, left bottom, left top, from(rgb(3, 34, 98)), color-stop(0.483, rgb(0, 57, 199)), color-stop(0.506, #1648fe), to(#5fc2ff));
+	background-image: -moz-linear-gradient(90deg, rgb(3, 34, 98) 0%, rgb(0, 57, 199) 48.3%, #1648fe 50.6%, #5fc2ff 100%);
+}
+/*
+
+@media (min-width: 1200px) {
+	
+	
+}*/

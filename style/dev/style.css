@@ -1,0 +1,106 @@
+/*** Main ***/
+
+body {
+	background-color: #cccfd1;
+	font: 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+/*** Header ***/
+
+header {
+	height: 50px;
+	background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.54)));
+	background-image: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.54) 100%);
+}
+
+header > nav {
+	padding-top: 5px;
+	text-align: center;
+}
+
+header > nav > a {
+	display: inline-block;
+	padding: 8px 10px;
+	text-transform: uppercase;
+	color: #555;
+	font-size: 12px;
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .7);
+}
+
+header > nav > a:hover {
+	color: #777;
+}
+
+header > nav > a:active {
+	color: #111;
+}
+
+
+/*** Article ***/
+
+* + article {
+	margin-top: 20px;
+}
+
+article {
+	width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 25px;
+	background: #fdfdfd;
+	border-radius: 7px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .7);
+	box-sizing: border-box;
+	line-height: 1.4em;
+}
+
+article > * + nav {
+	margin-top: 10px;
+}
+
+article > h1 {
+	text-align: center;
+}
+
+article > nav {
+	display: inline-block;
+	padding: 10px;
+	border: 1px solid #95a3cc;
+	border-radius: 6px;
+	background-color: #d1d9e5;
+}
+
+article > nav > a {
+	color: #5b69c5;
+}
+
+article > * + section {
+	margin-top: 25px;
+	padding-top: 25px;
+	border-top: 1px solid #b1b4b6;
+}
+
+article h2 {
+	font-size: 20px;
+}
+
+article * + p {
+	margin-top: 15px;
+}
+
+section > ul {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+section > ul > li {
+	list-style: disc;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+section > ul + * {
+	margin-top: 35px;
+}

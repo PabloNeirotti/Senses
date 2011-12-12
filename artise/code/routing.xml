@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<routing>
+	
+	<rule>
+		<url pattern="/" />
+		
+		<render src="main" />
+	</rule>
+	
+	<rule>
+		<url pattern="/library/" />
+		<url pattern="/library/%object/" />
+		<request type="ajax" />
+		
+		<procedure>
+			<action src="pages/library" />
+		</procedure>
+	</rule>
+	
+	
+	<!-- Documentation -->
+		
+	<rule>
+		<url pattern="/dev/" />
+		<url pattern="/dev/%page/" />
+		
+		<render src="dev" />
+	</rule>
+	
+	<rule>
+		<url pattern="/plugins:hunter/" />
+		<plugin id="hunter" />
+	</rule>
+	
+</routing>

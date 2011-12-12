@@ -1,0 +1,34 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+dd { -webkit-margin-start: 0; }
+h1, h2, h3, h4, h5, dl, dt, dd, ul, li, menu {
+	margin: 0;
+	padding: 0;
+	cursor: default;
+}
+p {
+	cursor: text;
+	margin: 0;
+	padding: 0;
+}
+
+p, h2, h3, h4, dd, dl, dt, .message {
+	-moz-user-select: moz-text;
+	-webkit-user-select: text;
+}
+
+h1, h2, h3, h4 {
+	font-weight: normal;
+}
+
+img {
+	border: 0;
+}
+
+* { -moz-user-select: moz-none; -webkit-user-select: none; }
+input, textarea { -moz-user-select: moz-text; -webkit-user-select: text; }
+a { text-decoration: none; outline: none; }
+a * { cursor: pointer; }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<info>
+	<name>MySQL</name>
+	<version>1.0.0beta</version>
+	<description>Object orientated MySQL tasks</description>
+	<author>Pixelsize Artise team</author>
+	<web>http://pixelsize.net/</web>
+	<email>artise@pixelsize.net</email>
+	<release>2010-08-17</release>
+	<doc_url></doc_url>
+</info>
