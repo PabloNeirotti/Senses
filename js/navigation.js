@@ -247,10 +247,15 @@ function NavigationObject() {
 	 *
 	 * @param address		String. Must begin with a slash, and NOT end with a slash.
 	 *								ie: "/library:videos"
+	 * @param active		Bool.	Wether it is the final address or not. That will
+	 *								mean the Hash is changed and so on.
 	 */
-	this.enterPage = function(address) {
+	this.enterPage = function(address, passive) {
 		// Show loading notification.
 		LoadingNotif.show();
+		
+		// Scope stuff.
+		var page_passive_load = passive;
 		
 		// Request page.
 		$.ajax({
@@ -313,7 +318,8 @@ function NavigationObject() {
 				// Store the list as this new page level's data (naturally, at the end of the array).
 				this.level_data.push({	cursor_position: -1,
 										page_info: page_info,
-										item_list: list
+										item_list: list,
+										address: address
 										});
 				
 				// Reset the cursor.
@@ -346,6 +352,10 @@ function NavigationObject() {
 		
 		// Go one step back in page level.
 		this.page_level --;
+		
+		// Update current address.
+		this.address = this.level_data[this.page_level].address;
+		window.location.hash = this.address;
 		
 		// Focus on the previous page level.
 		$('#navigation').children().eq(this.page_level - 1).addClass('focus');

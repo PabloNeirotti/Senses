@@ -7,7 +7,7 @@ namespace renders
 		{
 			/* Head */
 			
-			$this->head()->title = 'Senses - HTML5 media player';
+			$this->head()->title = 'Senses - HTML5 Media Center';
 			
 			// Frameworks.
 			$this->head()->addJS('/js/frameworks/jquery.js');
@@ -29,6 +29,11 @@ namespace renders
 			$this->head()->addCSS('/style/style.css');
 			$this->head()->addCSS('/style/gui/browser.css');
 			$this->head()->addCSS('/style/gui/player.css');
+			
+			// Favicon.
+			$favicon = $this->head()->addLink(array('rel' => 'icon',
+													'type' => 'image/png',
+													'href' => '/graphics/icon.png'));
 			
 			
 			/* Page */

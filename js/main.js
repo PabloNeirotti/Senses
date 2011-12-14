@@ -42,6 +42,13 @@ var LoadingNotif, PlaybackNotif, LicenseNotif;
 
 $(document).ready(function() {
 
+	// Quit if we are not on WebKit.
+	if(!$.browser.webkit) {
+		alert('Senses currently only runs on WebKit. Open Senses with Apple Safari or Google Chrome.');
+		return;
+	}
+	
+
 	// Initialize Senses objects.
 	Navigation = new NavigationObject();
 	LoadingNotif = new PassiveNotificationObject($('#loading-notif'));
@@ -98,42 +105,52 @@ $(document).ready(function() {
 					'/graphics/playback-notif/pause.svg',
 					'/graphics/playback-notif/play.svg');
 	
-	// Load the Library categories navigation.
-	Navigation.enterPage('/library');
+	
+	// Load Hash location.
+	if(window.location.hash) {
+		var hash = window.location.hash;
+		
+		// Get hash folders. That is, in example: library/music
+		var hash_folders = hash.split('/');
+		hash_folders.shift();
+		
+		Navigation.enterPage('/' + hash_folders.join('/'));
+		/*
+		
+		if(hash_folders[1]) {
+			// Passively load the Library categories navigation.
+			Navigation.enterPage('/library', true);
+			
+			// Get hash_steps. That is, in example: music:artist:album
+			var hash_steps = hash_folders[1].split(':');
+			
+			// The path we will be building and entering with each loop.
+			var page_path = new Array();
+			
+			// Enter each hash step.
+			for(var i = 0; i < hash_steps.length; i ++) {
+				// Add this step to the path.
+				page_path.push(hash_steps[i]);
+				
+				// Passively load the step, except the last one, which is loaded actively.
+				Navigation.enterPage('/library/' + page_path.join(':'), i < (hash_steps.length - 1) ? true : false);
+			}
+		} else {
+			// Load the Library categories navigation.
+			Navigation.enterPage('/library');
+		}*/
+	} else {
+		// Load the Library categories navigation.
+		Navigation.enterPage('/library');
+	}
+	
+	
 });
 
-function centerNotif(icon) {
-	$('#centerNotif').removeClass().addClass(icon).css({'-webkit-animation-name': ''});
-	setTimeout(function() {
-		$('#centerNotif').css({'-webkit-animation-name': 'centerNotif'});
-	}, 1);
-}
-
-function cssAnimate(element, animation) {
-	$(element).css({'-webkit-animation-name': ''});
-	setTimeout(function() {
-		$(element).css({'-webkit-animation-name': animation});
-	}, 0);
-	
-	var duration = $(element).css('-webkit-animation-duration');
-	duration = parseFloat(duration.substr(0, duration.length - 1)) * 1000;
-	
-	setTimeout(function() {
-		switch (animation) {
-			case 'zoom-in':
-			case 'fade-in':
-				$(element).css({opacity: 1});
-				break;
-				
-			case 'fadeOutFromTransp':
-			case 'zoom-out':
-			case 'fade-out':
-				$(element).css({opacity: 0});
-				break;
-				
-			case 'fadeInToTransp':
-				$(element).css({opacity: 0.7});
-				break;
-		}
-	}, duration);
+/**
+ * Called from console. Used to resize the window
+ * to the Snapshot taking resolution.
+ */
+function snapshotWindowResize() {
+	window.resizeTo(1306, 806);
 }
