@@ -2,7 +2,7 @@
  *                              S E N S E S                              *
  *                           multimedia player                           *
  *                                                                       *
- *                        version: "good grounds"                        *
+ *                       version: "fertile grounds"                      *
  *                                                                       *
  *                                                                       *
  *                                                                       *
@@ -67,6 +67,7 @@ $(document).ready(function() {
 	Player.dom_video.addEventListener("timeupdate", player_listenerTimeUpdate);
 	Player.dom_video.addEventListener("play", player_listenerPlay);
 	Player.dom_video.addEventListener("waiting", player_listenerWaiting);
+	Player.dom_video.addEventListener("ended", player_listenerEnded);
 	
 	Player.dom_audio.addEventListener("progress", player_listenerProgress, false);
 	Player.dom_audio.addEventListener("canplaythrough", player_listenerCanPlayThrough);
@@ -74,6 +75,7 @@ $(document).ready(function() {
 	Player.dom_audio.addEventListener("timeupdate", player_listenerTimeUpdate);
 	Player.dom_audio.addEventListener("play", player_listenerPlay);
 	Player.dom_audio.addEventListener("waiting", player_listenerWaiting);
+	Player.dom_audio.addEventListener("ended", player_listenerEnded);
 	
 	
 	/* Initialize Inputs */
@@ -144,7 +146,8 @@ $(document).ready(function() {
 		Navigation.enterPage('/library');
 	}
 	
-	
+	// Focus the document! =D
+	$(document).focus();
 });
 
 /**

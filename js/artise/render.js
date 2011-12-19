@@ -18,6 +18,16 @@
 	// Pointer for blocks.
 	_this.block_pointer = -1;
 	
+	// Where the variables will be hosted for replace later on.
+	_this.variables = new Array();
+	
+	/**
+	 * Sets a variable token.
+	 */
+	_this.setvar = function(variable, value) {
+		_this.variables.push(Array(variable, value));
+	}
+	
 	_this.block = function(block_zone, block_name) {
 		_this.block_pointer ++;
 		
@@ -55,6 +65,11 @@
 			palette_main_html = palette_main_html.replace('<!--zone:' + zone + '-->', blocks_by_zones[zone]);
 		}
 		
+		// Replace each variable in the HTML.
+		for(var i = 0; i < _this.variables.length; i ++) {
+			palette_main_html = palette_main_html.replace('%' + _this.variables[i][0], _this.variables[i][1]);
+		}
+		
 		// Return the painted Slate.
 		return palette_main_html;
 	}
@@ -81,13 +96,11 @@ function Block(block_html) {
 	 */
 	_this.toString = function() {
 		// Copy the block html source.
-		// Does this work???
 		var block_html = _this.block_html;
 		
 		// Replace each variable in the HTML.
 		for(var i = 0; i < _this.variables.length; i ++) {
 			block_html = block_html.replace('%' + _this.variables[i][0], _this.variables[i][1]);
-
 		}
 			
 		// Return the finished block.

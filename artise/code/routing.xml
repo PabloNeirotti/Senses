@@ -17,15 +17,25 @@
 		</procedure>
 	</rule>
 	
-	
-	<!-- Documentation -->
-		
 	<rule>
-		<url pattern="/dev/" />
-		<url pattern="/dev/%page/" />
+		<url pattern="/library:item:increasePlayCount/" />
+		<request type="ajax" />
 		
-		<render src="dev" />
+		<procedure>
+			<action src="library/increasePlayCount" />
+		</procedure>
 	</rule>
+	
+	<rule>
+		<url pattern="/library:addMusicAlbum/" />
+		
+		<procedure>
+			<action src="library/addMusicAlbum" />
+		</procedure>
+	</rule>
+	
+	
+	<!-- Hunter -->
 	
 	<rule>
 		<url pattern="/plugins:hunter/" />

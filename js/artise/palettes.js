@@ -11,7 +11,16 @@ function PalettesStore() {
 		'page_items_list' : {
 			'main' : '<div class="browser list scrollable vertical focus"><div><!--zone:items--></div></div>',
 			'blocks' : {
-				'item' : '<div>%caption</div>'
+				'item' : '<div>%caption</div>',
+				'item_wfeat' : '<div class="wfeat"><div>%caption</div><div>%feat</div></div>'
+			}
+		},
+		
+		'page_items_list_and_sidegroup' : {
+			'main' : '<div class="list-and-sidegroup"><div class="sidegroup"><img src="%sidegroup" /><div></div></div><div class="browser list scrollable vertical focus"><div><!--zone:items--></div></div></div>',
+			'blocks' : {
+				'item' : '<div>%caption</div>',
+				'item_wfeat' : '<div class="wfeat"><div>%caption</div><div>%feat</div></div>'
 			}
 		},
 		

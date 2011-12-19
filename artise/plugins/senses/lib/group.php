@@ -51,10 +51,7 @@ namespace plugins\senses
 				
 				// Get groups from this artist, of the requested media type.
 				$this->media = $this->devkit->plugins()->mysql()->reader("
-																		SELECT 	$items_table.title,
-																				$items_table.file_ext,
-																				$items_table.external_url,
-																				$items_table.codename,
+																		SELECT 	$items_table.*,
 																				licenses.caption AS license
 																		FROM	$items_table, licenses
 																		WHERE 	$items_table.group_id = {$this->id}

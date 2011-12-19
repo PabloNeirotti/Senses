@@ -232,8 +232,17 @@ function NavigationObject() {
 				break;
 			
 			case 'media':
-				// Tell the player to play this media.
-				Player.playMedia(item_data);
+				/* Tell the player to play this media */
+				
+				// Does this media have auto-playlist?
+				if(item_data.auto_playlist) {
+					// Play this playlist, at the current position.
+					Player.playPlaylist(this.level_data[this.page_level].item_list, this.cursor.position - 1);
+				} else {
+					// Play this media item, and clear current playlist.
+					Player.clearPlaylist();
+					Player.playMedia(item_data);
+				}
 				break;
 		}
 	}
@@ -275,10 +284,20 @@ function NavigationObject() {
 				// Create a new Slate, with the corresponding palette.
 				var slate = new Slate('page_' + page_info.type);
 				
+				// Sidegroup stuff.
+				if(page_info.type == 'items_list_and_sidegroup') {
+					slate.setvar('sidegroup', page_info.thumbnail);
+				}
+				
 				// Loop through each item.
 				for(i in list) {
 					// Create a new 'item' block in the 'items' zone.
-					block = slate.block('items', 'item');
+					if(list[i].feat) {
+						block = slate.block('items', 'item_wfeat');
+						block.setvar('feat', 'Feat. ' + list[i].feat);
+					} else {
+						block = slate.block('items', 'item');
+					}
 					
 					// Set variable tokens.
 					switch(page_info.type) {
@@ -287,6 +306,7 @@ function NavigationObject() {
 							break;
 							
 						case 'items_list':		// Vertical list. Used mostly for Music.
+						case 'items_list_and_sidegroup':
 							block.setvar('caption', (list[i].caption ? list[i].caption : list[i].title));
 							break;
 							
@@ -304,6 +324,14 @@ function NavigationObject() {
 				// Append page to the navigation.
 				$('#navigation').append(slate.toString());
 				
+				var stylesheet = null;
+				
+				// Insert Stylesheet if one was provided.
+				if(page_info.stylesheet) {
+					stylesheet = $('<link rel="stylesheet" type="text/css" href="' + page_info.stylesheet + '">');
+					$('head').append(stylesheet);
+				}
+				
 				// Update current address.
 				this.address = address;
 				window.location.hash = address;
@@ -319,7 +347,8 @@ function NavigationObject() {
 				this.level_data.push({	cursor_position: -1,
 										page_info: page_info,
 										item_list: list,
-										address: address
+										address: address,
+										stylesheet: stylesheet
 										});
 				
 				// Reset the cursor.
@@ -348,6 +377,11 @@ function NavigationObject() {
 		// Remove this page from breadcrumbs, if it was put there before.
 		if(this.level_data[this.page_level].page_info.title) {
 			$('#breadcrumbs > span').last().remove();
+		}
+		
+		// Remove this page's Stylesheet, if any.
+		if(this.level_data[this.page_level].stylesheet) {
+			$(this.level_data[this.page_level].stylesheet).remove();
 		}
 		
 		// Go one step back in page level.

@@ -42,10 +42,7 @@ namespace plugins\senses
 			// If this object does not have this media table loaded yet, load it first.
 			if(!isset($this->media[$media_type])) {
 				// Get media.
-				$this->media[$media_type] = $this->mysql->reader("SELECT 	media_{$media_type}.title,
-																			media_{$media_type}.file_ext,
-																			media_{$media_type}.external_url,
-																			media_{$media_type}.codename,
+				$this->media[$media_type] = $this->mysql->reader("SELECT 	media_{$media_type}.*,
 																			licenses.caption AS license
 																	FROM media_{$media_type}, licenses
 																	WHERE 	media_{$media_type}.artist_id = {$this->id}

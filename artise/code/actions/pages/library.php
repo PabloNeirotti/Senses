@@ -17,6 +17,10 @@ namespace actions\pages
 			// Define default value for the Page title.
 			$page_title = null;
 			
+			// Define default value for the Page's stylesheet and thumbnail.
+			$stylesheet = null;
+			$thumbnail = null;
+			
 			// Define an empty request array, where we will store the request data we collect.
 			$request = array();
 			
@@ -67,6 +71,20 @@ namespace actions\pages
 									// Fetch the group object.
 									$group = $artist->group($request['group'], $request['media']);
 									
+									// Add page stylesheet if one exists.
+									// [HARDCODED] I'm just sending more of these stylesheets =P
+									if(file_exists($_SERVER['DOCUMENT_ROOT'] . "/library/{$artist->codename}/style.css"))
+									{
+										$stylesheet = "/library/{$artist->codename}/style.css";
+									}
+									
+									// Set this page's thumbnail.
+									$thumbnail = $senses->getThumbnail('/library/'
+													. $artist->codename
+													. '/' . $request['media']
+													. '/' . $group->codename
+													. '/thumb.jpg');
+									
 									// Define player type. (audio or video).
 									$player_type = $media_type->video ? 'video' : 'audio';
 									
@@ -84,6 +102,8 @@ namespace actions\pages
 									{
 										$row['link_type'] = 'media';
 										$row['player_type'] = $player_type;
+										$row['media_type'] = $media_type->name;
+										$row['auto_playlist'] = $media_type->auto_playlist;
 										
 										// Media source format: /library/<artist_name>/<media_type>/<group>/<codename>.<file_ext>
 										$media_source = "/library/"
@@ -106,6 +126,13 @@ namespace actions\pages
 									// CURRENT PATH: /library/<media>:<artist>/
 									
 									/* No group requested. SEND the GROUPS from this artist, of this media type. */
+									
+									// Add page stylesheet if one exists.
+									// Stylesheets are only sent on the first "child" page of the Stylesheet owner (this case, an Artist).
+									if(file_exists($_SERVER['DOCUMENT_ROOT'] . "/library/{$artist->codename}/style.css"))
+									{
+										$stylesheet = "/library/{$artist->codename}/style.css";
+									}
 									
 									// Define the page type.
 									$page_type = 'items_' . $media_type->groups_view_type;
@@ -140,6 +167,13 @@ namespace actions\pages
 								
 								/* Does not support groups. SEND MEDIA ITEMS from this Artist, of this media type. */
 								
+								// Add page stylesheet if one exists.
+								// Stylesheets are only sent on the first "child" page of the Stylesheet owner (this case, an Artist).
+								if(file_exists($_SERVER['DOCUMENT_ROOT'] . "/library/{$artist->codename}/style.css"))
+								{
+									$stylesheet = "/library/{$artist->codename}/style.css";
+								}
+								
 								// Define player type. (audio or video).
 								$player_type = $media_type->video ? 'video' : 'audio';
 								
@@ -157,6 +191,7 @@ namespace actions\pages
 								{
 									$row['link_type'] = 'media';
 									$row['player_type'] = $player_type;
+									$row['media_type'] = $media_type->name;
 									
 									// Media source format: /library/<artist_name>/<media_type>/<codename>.<file_ext>
 									$media_source = "/library/"
@@ -225,6 +260,7 @@ namespace actions\pages
 						{
 							$row['link_type'] = 'media';
 							$row['player_type'] = $player_type;
+							$row['media_type'] = $media_type->name;
 							
 							// Media source format: /library/<artist_name>/<media_type>/(<group>/)<codename>.<file_ext>
 							
@@ -301,8 +337,10 @@ namespace actions\pages
 				}
 				
 				// Return JSON with the Page info and Items listing.
-				return array(	array(	'type' => $page_type,
-										'title' => $page_title),
+				return array(	array(	'type' => $page_type,			// Page type.
+										'title' => $page_title,			// Title for this page.
+										'stylesheet' => $stylesheet,	// Stylesheet for this page.
+										'thumbnail' => $thumbnail),		// Thumbnail for this page.
 								$items_list);
 			
 			}

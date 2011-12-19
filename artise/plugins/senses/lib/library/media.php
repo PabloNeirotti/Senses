@@ -12,6 +12,7 @@ namespace plugins\senses\library
 		// Properties.
 		private
 			$id,
+			$media_type,
 			$properties = Array();
 		
 		// Dependencies.
@@ -30,14 +31,35 @@ namespace plugins\senses\library
 		/**
 		 * The constructor stores the id.
 		 */
-		public function __construct($id)
+		public function __construct($id, $media_type)
 		{
-			// Store this media's id.
+			// Store this media's id and type.
 			$this->id = $id;
+			$this->media_type = $media_type;
 			
 			// Store dependencies.
 			$this->devkit = \Artise::devkit();
 			$this->mysql = $this->devkit->plugins()->mysql();
+		}
+		
+		
+		/**
+		 * Increase play count
+		 *
+		 * [WARNING] Needs to be polished. A lot.
+		 */
+		public function increasePlayCount()
+		{
+			// Get dependencies.
+			$this->checkSetProperties();
+			
+			// Increase play count.
+			$this->play_count = $this->play_count + 1;
+			
+			//die(print_r("UPDATE media_{$this->media_type} SET play_count = {$this->play_count} WHERE id = {$this->id}", true));
+			
+			// Update the play count at the database.
+			$this->mysql->execute("UPDATE media_{$this->media_type} SET play_count = {$this->play_count} WHERE id = {$this->id}");
 		}
 		
 		
@@ -49,7 +71,7 @@ namespace plugins\senses\library
 			if(count($this->properties) == 0)
 			{
 				// Fetch the properties from the database.
-				$properties = $this->mysql->reader("SELECT * FROM {$this->media_type} WHERE id = {$this->id}");
+				$properties = $this->mysql->reader("SELECT * FROM media_{$this->media_type} WHERE id = {$this->id}");
 				
 				if($properties->rowCount() > 0)
 				{

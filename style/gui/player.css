@@ -54,6 +54,10 @@
 	background-image: url(/graphics/licenses/cc-small.png);
 }
 
+#license.copyright {
+	background-image: url(/graphics/licenses/copyright-small.png);
+}
+
 @-webkit-keyframes license-animation {
 	from {
 		opacity: 0;

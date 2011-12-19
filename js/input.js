@@ -113,7 +113,7 @@ function KeyboardInterfaceObject() {
 	_this.repeat_timeout = null;
 	
 	// Append Key strokes listener.
-	$(document).keydown(function(event) {
+	$(window).keydown(function(event) {
 		// Check if we can already process the input.
 		if (_this.input_enabled == true) {
 			
@@ -152,7 +152,7 @@ function KeyboardInterfaceObject() {
 	});
 	
 	// Append key release listener.
-	$(document).keyup(function(event) {
+	$(window).keyup(function(event) {
 		// Clears the repeating-key timeout, as the key was released.
 		clearTimeout(_this.repeat_timeout);
 		

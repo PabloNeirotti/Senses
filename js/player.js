@@ -41,6 +41,9 @@ function PlayerObject() {
 		item_data: null			// Stores the item data.
 	};
 	
+	// Current playlist.
+	this.current_playlist = false;
+	
 	// Progress bar hide timeout.
 	var progress_bar_hide_timeout;
 	
@@ -49,6 +52,35 @@ function PlayerObject() {
 	this.dom_video = document.getElementById("senses-video");
 	this.jq_audio = $("#senses-audio");
 	this.jq_video = $("#senses-video");
+	
+	
+	
+	/**
+	 * [Media Playback] Play Playlist
+	 *
+	 * Loads and plays the provided playlist.
+	 *
+	 * @param items_list			A items list.
+	 * @param track_position		Optional. If one provided, it will start playing.
+	 */
+	this.playPlaylist = function(items_list, track_position) {
+		// Create the provided playlist.
+		this.current_playlist = new PlaylistObject(items_list);
+		
+		// Begin playing.
+		this.current_playlist.play(track_position);
+	}
+	
+	
+	/**
+	 * [Media Playback] Clear Playlist
+	 *
+	 * Clears the playlist.
+	 */
+	this.clearPlaylist = function() {
+		// Clear the current playlist.
+		this.current_playlist = false;
+	}
 	
 	
 	/**
@@ -60,8 +92,9 @@ function PlayerObject() {
 	 */
 	this.playMedia = function(item_data) {
 		// If we are playing a media, pause it.
-		if(this.current_media.is_playing)
+		if(this.current_media.is_playing) {
 			this.pause();
+		}
 		
 		// Store the new item data.
 		this.current_media.item_data = item_data;
@@ -79,9 +112,11 @@ function PlayerObject() {
 		// Does this media have any kind of license?
 		if(item_data.license) {
 			// Set the license type.
+			// Show icon when available.
 			if(item_data.license.substr(0, 16) == 'Creative Commons') {
-				// Apply CC goodies =3
 				$('#license').addClass('cc').html(item_data.license.substr(17));
+			} else if(item_data.license.substr(0, 9) == 'Copyright') {
+				$('#license').addClass('copyright').html(item_data.license.substr(10));
 			} else {
 				$('#license').html(item_data.license)
 			}
@@ -113,6 +148,20 @@ function PlayerObject() {
 		
 		// Reset buffer progress.
 		this.updateBufferProgress(0, 1);
+		
+		// Notify the server to increase play count.
+		$.ajax({
+			url: '/library:item:increasePlayCount/',
+			type: 'POST',
+			data: { id: item_data.id,
+					media_type: item_data.media_type
+					},
+			context: this,
+			success: function(json){
+				// Cut off Artise Procedure's JSON to the last Action.
+				//json = json.pop();
+			}
+		});
 	}
 	
 	/**
@@ -294,6 +343,79 @@ function PlayerObject() {
 	}
 }
 
+
+
+
+function PlaylistObject(items_list) {
+	// Playlist items.
+	this.items_list = items_list;
+	
+	// Current position.
+	this.position = 0;
+	
+	/**
+	 * [Media Playback] Play Playlist
+	 *
+	 * Plays the current position in the playlist.
+	 *
+	 * @param position			Optional. Position to play in the playlist.
+	 *							Defaults to the current position.
+	 */
+	this.play = function(position) {
+		// Update the current position, if one was provided.
+		if(position) {
+			this.position = position;
+		}
+		
+		// Play the current item.
+		Player.playMedia(this.items_list[this.position]);
+	}
+	
+	/**
+	 * [Media Playback] Next
+	 *
+	 * Plays the next item in the playlist, if any.
+	 */
+	this.next = function() {
+		// Return false if there is no next item.
+		if(this.items_list.length < this.position + 2) {
+			return false;
+		}
+		
+		// Move position forward.
+		this.position ++;
+		
+		// Play the current item.
+		this.play();
+		
+		return true;
+	}
+	
+	/**
+	 * [Media Playback] Prev
+	 *
+	 * Plays the previous item in the playlist, if any.
+	 */
+	this.prev = function() {
+		// Return false if we already are at the beginning.
+		if(this.position <= 0) {
+			return false;
+		}
+		
+		// Move position backwards.
+		this.position --;
+		
+		// Play the current item.
+		this.play();
+		
+		return true;
+	}
+}
+
+
+
+
+
 /**
  * [Listener] Progress
  *
@@ -365,4 +487,16 @@ function player_listenerPlay(event) {
 	
 	// Update the document title.
 	document.title = '▶ ' + Player.current_media.item_data.artist_name + ' - ' + Player.current_media.item_data.title;
+}
+
+/**
+ * [Listener] Ended
+ *
+ * Called when the media ends playing. Yes, by reaching the end.
+ */
+function player_listenerEnded(event) {
+	// If there is a playlist, play the next item.
+	if(Player.current_playlist) {
+		Player.current_playlist.next();
+	}
 }

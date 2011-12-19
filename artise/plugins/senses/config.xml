@@ -8,9 +8,10 @@
 			<video>false</video>
 			<library_artist_priority>true</library_artist_priority>
 			<groups>true</groups>
-			<view_type>list</view_type>
+			<view_type>list_and_sidegroup</view_type>
 			<groups_view_type>thumbs_square</groups_view_type>
 			<artists_view_type>thumbs_square</artists_view_type>
+			<auto_playlist>true</auto_playlist>
 		</media>
 		<media>
 			<name>shows</name>
@@ -21,6 +22,7 @@
 			<view_type>list</view_type>
 			<groups_view_type>thumbs_poster</groups_view_type>
 			<artists_view_type>thumbs_poster</artists_view_type>
+			<auto_playlist>false</auto_playlist>
 		</media>
 		<media>
 			<name>movies</name>
@@ -29,6 +31,7 @@
 			<library_artist_priority>false</library_artist_priority>
 			<groups>false</groups>
 			<view_type>thumbs_poster</view_type>
+			<auto_playlist>false</auto_playlist>
 		</media>
 		
 	</media_types>
@@ -41,6 +44,7 @@ Media Types:
 		audio						=> Wether the media type contains audio or not.
 		video						=> Wether the media type contains video or not.
 		library_artist_priority		=> If true, on Library view, the media type will be grouped by artists.
-		groups					=> If true, that media type will use groups (like Music Albums or Shows Seasons)
+		groups						=> If true, that media type will use groups (like Music Albums or Shows Seasons)
 		view_type					=> Visualization used for this kind of media.
+		auto_playlist				=> Plays the whole group as a Playlist when playing one item.
 -->

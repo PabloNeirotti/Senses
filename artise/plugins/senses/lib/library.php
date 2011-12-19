@@ -12,7 +12,8 @@ namespace plugins\senses
 		// Media tables.
 		private
 			$media,
-			$media_types;
+			$media_types = array(),
+			$media_object = array();
 		
 		// Dependencies.
 		private
@@ -34,10 +35,7 @@ namespace plugins\senses
 			// If this object does not have this media table loaded yet, load it first.
 			if(!isset($this->media[$media_type])) {
 				// Get media.
-				$this->media[$media_type] = $this->mysql->reader("SELECT 	media_{$media_type}.title,
-																			media_{$media_type}.file_ext,
-																			media_{$media_type}.external_url,
-																			media_{$media_type}.codename,
+				$this->media[$media_type] = $this->mysql->reader("SELECT 	media_{$media_type}.*,
 																			licenses.caption AS license,
 																			artists.name AS artist_name,
 																			artists.codename AS artist_codename
@@ -51,6 +49,25 @@ namespace plugins\senses
 			
 			// Return the media array.
 			return $this->media[$media_type];
+		}
+		
+		/**
+		 * Get a Library's media specific object.
+		 */
+		public function &mediaObject($id, $media_type)
+		{
+			// Check if this kind of media exists.
+			if(!isset($this->media_types[$media_type]))
+				throw new \HunterException('SENSES_E0002', $media_type);
+			
+			// If this object does not have this media table loaded yet, load it first.
+			if(!isset($this->media_object[$media_type])) {
+				// Get media.
+				$this->media_object[$media_type] = new Library\Media($id, $media_type);
+			}
+			
+			// Return the media array.
+			return $this->media_object[$media_type];
 		}
 		
 		/**
