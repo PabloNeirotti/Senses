@@ -13,7 +13,19 @@
  
  
 Senses is a decentralized HTML5 multimedia player. You can try it out at
-http://senses.artpulse.me/
+http://app.sensesproject.com/
+
+
+
+*** NOTICE ON THE CURRENT STATUS ***
+
+I'm building a new Framework to replace the current one (Artise), which
+is greatly object-oriented. It will make development faster and even more
+modular, to have better code reutilization.
+
+When the new Framework is ready, I'll port Senses to it. Please remember
+I go at one man speed here. Thank you.
+
 
 
 *** Index ***
