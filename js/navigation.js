@@ -48,7 +48,10 @@ function NavigationObject() {
 	this.address = '/';				// Current navigation address.
 	
 	// Ticket Box visibility.
-	this.ticket_box_visible = true;	// 0 = hidden. 1 = visible.
+	this.ticket_box_visible = true;	// false = hidden. true = visible.
+	
+	// Busy.
+	this.busy = false;				// false = Navigation not busy. true = Navigation is busy, ignore inputs.
 	
 	
 	/**
@@ -62,6 +65,10 @@ function NavigationObject() {
 	}
 	
 	this.moveCursor = function(direction) {
+		// Exit if the Navigation is busy.
+		if(this.busy) {
+			return false;
+		}
 		
 		// Define the direct parent of the items we move through.
 		if($('.focus').hasClass('scrollable')) {
@@ -217,6 +224,11 @@ function NavigationObject() {
 	 * That will lead to opening a new page, or initiating a media playback.
 	 */
 	this.executeCursor = function() {
+		// Exit if the Navigation is busy.
+		if(this.busy) {
+			return false;
+		}
+		
 		// Exit if the cursor is not on anything.
 		if(this.cursor.position <= 0)
 			return;
@@ -260,20 +272,25 @@ function NavigationObject() {
 	 *								mean the Hash is changed and so on.
 	 */
 	this.enterPage = function(address, passive) {
+		// Exit if the Navigation is busy.
+		if(this.busy) {
+			return false;
+		}
+		
 		// Show loading notification.
 		LoadingNotif.show();
 		
 		// Scope stuff.
 		var page_passive_load = passive;
 		
+		// Make navigation busy.
+		this.busy = true;
+		
 		// Request page.
 		$.ajax({
 			url: address + '/',
 			context: this,
 			success: function(json){
-				// We are waiting. Hide the loading notification.
-				LoadingNotif.hide();
-				
 				// Cut off Artise Procedure's JSON to the last Action.
 				json = json.pop();
 				
@@ -353,6 +370,13 @@ function NavigationObject() {
 				
 				// Reset the cursor.
 				this.resetCursor();
+			},
+			complete: function() {
+				// We are waiting. Hide the loading notification.
+				LoadingNotif.hide();
+				
+				// Make navigation no longer busy.
+				this.busy = false;
 			}
 		});
 	}
@@ -364,12 +388,24 @@ function NavigationObject() {
 	 * Closes the current page, going back one level in the navigation.
 	 */
 	this.closePage = function() {
+		// Exit if the Navigation is busy.
+		if(this.busy) {
+			return false;
+		}
+		
 		// Do not execute if we are already at root level.
 		if(this.page_level <= 1)
 			return;
 		
+		// Make navigation busy.
+		this.busy = true;
+		
 		// Removes the focus class, and adds a close one.
 		$('#navigation > div:last-child').removeClass('focus').addAnimationClass('close', function() {
+			
+			// Make navigation no longer busy.
+			Navigation.busy = false;
+			
 			// Once the closing animation is over, remove this page.
 			$('#navigation > div:last-child').remove();
 		});

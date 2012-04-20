@@ -55,7 +55,8 @@ namespace plugins\senses
 																				licenses.caption AS license
 																		FROM	$items_table, licenses
 																		WHERE 	$items_table.group_id = {$this->id}
-																				AND media_{$this->media_type}.license_id = licenses.id");
+																				AND media_{$this->media_type}.license_id = licenses.id
+																		ORDER BY track_order ASC");
 				
 				
 				// Send to Array.

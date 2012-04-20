@@ -7,7 +7,7 @@ namespace renders
 		{
 			/* Head */
 			
-			$this->head()->title = 'Senses - HTML5 Media Center';
+			$this->head()->title = 'Senses';
 			
 			// Frameworks.
 			$this->head()->addJS('/js/frameworks/jquery.js');

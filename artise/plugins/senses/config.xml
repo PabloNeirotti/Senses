@@ -22,7 +22,7 @@
 			<view_type>list</view_type>
 			<groups_view_type>thumbs_poster</groups_view_type>
 			<artists_view_type>thumbs_poster</artists_view_type>
-			<auto_playlist>false</auto_playlist>
+			<auto_playlist>true</auto_playlist>
 		</media>
 		<media>
 			<name>movies</name>

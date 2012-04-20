@@ -241,11 +241,6 @@ namespace actions\pages
 						
 						/* Send this media's items listing */
 						
-						// Store the grouping, if any.
-						//if(isset($command[1]))
-							//$request['grouping'] = $command[1];
-						// [WARNING] Grouping not yet implemented. Used for Music Albums and Series Seasons.
-						
 						// Define the page type.
 						$page_type = 'items_' . $media_type->view_type;
 						

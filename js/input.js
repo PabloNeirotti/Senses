@@ -38,11 +38,11 @@ function InputObject() {
 	 */
 	this.forward = function() {
 		if (Navigation.ticket_box_visible == true) {
-			/* Go previous at navigation */
+			/* Go forward at navigation */
 			Navigation.displayTicketBox(true);
 			Navigation.moveCursor(1);
 		} else {
-			/* Go previous at player */
+			/* Go forward at player */
 			Player.current_media.dom.currentTime += 5;
 			Player.displayProgressBar(true);
 		}
@@ -113,7 +113,7 @@ function KeyboardInterfaceObject() {
 	_this.repeat_timeout = null;
 	
 	// Append Key strokes listener.
-	$(window).keydown(function(event) {
+	$(document).keydown(function(event) {
 		// Check if we can already process the input.
 		if (_this.input_enabled == true) {
 			
@@ -128,23 +128,28 @@ function KeyboardInterfaceObject() {
 			// Switch through the different possible key strokes.
 			switch (event.keyCode) {
 				case 39: // Right
+					event.preventDefault();
 					Input.forward();
 					break;
 				
 				case 37: // Left
+					event.preventDefault();
 					Input.previous();
 					break;
 				
+				case 13: // Enter
 				case 40: // Down
+					event.preventDefault();
 					Input.action();
 					break;
 					
-				case 13: // Enter
+				case 27: // Escape
+					event.preventDefault();
 					Input.view();
 					break;
 				
 				case 38: // Up
-				case 27: // Escape
+					event.preventDefault();
 					Input.back();
 					break;
 			}

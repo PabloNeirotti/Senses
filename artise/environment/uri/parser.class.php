@@ -18,7 +18,7 @@ namespace Env\Uri
 			//static $called = false; if($called) return; $called = true;
 
 			//try to catch get-variables like ?var1=value&var2=value&...
-			$argv_str = $_SERVER['argc'] > 0 ? $_SERVER['argv'][0] : NULL;
+			$argv_str = isset($_SERVER['argc']) ? $_SERVER['argv'][0] : NULL;
 			if($argv_str) {
 				$_GET = array();
 				parse_str($argv_str, $_GET);

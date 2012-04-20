@@ -44,11 +44,11 @@ $(document).ready(function() {
 
 	// Quit if we are not on WebKit.
 	if(!$.browser.webkit) {
-		alert('Senses currently only runs on WebKit. Open Senses with Apple Safari or Google Chrome.');
+		alert('Senses currently only runs on WebKit. Open Senses with Apple Safari (recommended) or Google Chrome.');
 		return;
 	}
 	
-
+	
 	// Initialize Senses objects.
 	Navigation = new NavigationObject();
 	LoadingNotif = new PassiveNotificationObject($('#loading-notif'));
@@ -148,6 +148,11 @@ $(document).ready(function() {
 	
 	// Focus the document! =D
 	$(document).focus();
+	
+	$(document).mouseout(function() {
+		// Focus the document! =D
+		$(document).focus();
+	});
 });
 
 /**

@@ -146,13 +146,11 @@
 	position: fixed;
 	right: 30px;
 	top: 130px;
-	padding: 10px;
-	border: 1px solid rgba(255, 255, 255, .3);
-	border-radius: 7px;
-	background: rgba(0, 0, 0, .2);
+	width: 448px;
 	color: white;
-	font-size: 14px;
-	text-shadow: 0 1px 1px rgba(0, 0, 0, .8);
+	font-size: 40px;
+	text-shadow: 0 5px 20px rgba(0, 0, 0, .8);
+	text-align: center;
 	opacity: 0;
 }
 
@@ -188,7 +186,7 @@
 	left: 0;
 	bottom: 0;
 	display: block;
-	height: 350px;
+	height: 400px;
 	width: 100%;
 	overflow-x: hidden;
 	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.307, rgba(72, 111, 149, 0.95)), color-stop(0.8, rgba(27, 40, 100, 0)));
@@ -201,7 +199,7 @@
 }
 
 .browser.sliding-media.poster {
-	height: 450px;
+	height: 500px;
 }
 
 .browser.sliding-media.focus {
@@ -237,14 +235,14 @@
 	position: absolute;
 	display: block;
 	left: 0;
-	height: 350px;
+	height: 400px;
 	width: 500%;
 	-webkit-transform: translate3d(440px, 0, 0);
 	-webkit-transition: -webkit-transform .2s ease-out;
 }
 
 .browser.sliding-media.poster > div {
-	height: 450px;
+	height: 500px;
 }
 
 .browser.sliding-media > div > div {
@@ -252,8 +250,8 @@
 	float: left;
 	border-radius: 5px;
 	padding: 10px;
-	width: 200px;
-	height: 230px;
+	width: 250px;
+	height: 280px;
 	background-color: rgba(0, 0, 0, .2);
 	text-align: center;
 	border: 1px solid rgba(255, 255, 255, .2);
@@ -264,7 +262,8 @@
 }
 
 .browser.sliding-media.poster > div > div {
-	height: 330px;
+	width: 240px;
+	height: 390px;
 }
 
 .browser.sliding-media > div > div + div {
@@ -273,15 +272,15 @@
 
 .browser.sliding-media > div > div > img {
 	display: inline-block;
-	width: 200px;
-	height: 200px;
+	width: 250px;
+	height: 250px;
 	background: no-repeat center center;
 	border-radius: 4px;
 }
 
 .browser.sliding-media.poster > div > div > img {
-	width: 200px;
-	height: 300px;
+	width: 240px;
+	height: 360px;
 }
 
 .browser.sliding-media > div > div.sel {
@@ -311,12 +310,14 @@
 
 .browser.list {
 	position: fixed;
-	left: 1em;
+	left: 0;
 	top: 25%;
 	display: block;
 	height: 75%;
 	width: 65%;
+	padding: 0 25px;
 	overflow-y: hidden;
+	overflow-x: visible;
 	opacity: 0;
 	-webkit-transform: scale3d(4, 4, 1);
 	-webkit-transform-origin: center 40%;
@@ -357,7 +358,8 @@
 	line-height: 2em;
 	background: -webkit-gradient(linear, left bottom, left top, from(rgba(43, 45, 50, 0.63)), color-stop(0.483, rgba(47, 50, 56, 0.44)), color-stop(0.506, rgba(226, 229, 231, 0.15)), to(rgba(212, 220, 226, 0.34))) rgba(0, 0, 0, .5);
 	background: -moz-linear-gradient(90deg, rgba(43, 45, 50, 0.63) 0%, rgba(47, 50, 56, 0.44) 48.3%, rgba(226, 229, 231, 0.15) 50.6%, rgba(212, 220, 226, 0.34) 100%) rgba(0, 0, 0, .5);
-	box-shadow: 0px 2px 4px rgba(0, 0, 0, .8);
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, .8),
+				0px -5px 40px black;
 }
 
 .browser.list > div > div:first-child {

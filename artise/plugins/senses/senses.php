@@ -81,12 +81,12 @@ namespace plugins\senses
 		 *
 		 * @param media_type	(optional string) Media type to filter artists by.
 		 */
-		public function getArtists($media_type = false)
+		public function getArtists($media_type = false, $return_reader = false)
 		{
 			if($media_type)
 			{
 				// Get artists that have this media type published.
-				$artists = $this->devkit()->plugins()->mysql()->reader("SELECT artists.name, artists.codename FROM artists, media_{$media_type} WHERE artists.id = media_{$media_type}.artist_id GROUP BY artists.name ORDER BY artists.name ASC");
+				$artists = $this->devkit()->plugins()->mysql()->reader("SELECT artists.name, artists.codename FROM artists, media_{$media_type} WHERE artists.id = media_{$media_type}.artist_id GROUP BY artists.name ORDER BY artists.last_activity DESC");
 			}
 			else
 			{
@@ -94,7 +94,14 @@ namespace plugins\senses
 				$artists = $this->devkit()->plugins()->mysql()->reader("SELECT name, codename FROM artists ORDER BY name");
 			}
 			
-			return $artists->tableToArray();
+			if($return_reader)
+			{
+				return $artists;
+			}
+			else
+			{
+				return $artists->tableToArray();
+			}
 		}
 		
 		
