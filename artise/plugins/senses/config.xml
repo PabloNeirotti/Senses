@@ -19,7 +19,7 @@
 			<video>true</video>
 			<library_artist_priority>true</library_artist_priority>
 			<groups>true</groups>
-			<view_type>list</view_type>
+			<view_type>list_count</view_type>
 			<groups_view_type>thumbs_poster</groups_view_type>
 			<artists_view_type>thumbs_poster</artists_view_type>
 			<auto_playlist>true</auto_playlist>

@@ -24,6 +24,14 @@ function PalettesStore() {
 			}
 		},
 		
+		'page_items_list_count' : {
+			'main' : '<div class="browser list scrollable vertical focus count"><div><!--zone:items--></div></div>',
+			'blocks' : {
+				'item' : '<div>%caption</div>',
+				'item_wfeat' : '<div class="wfeat"><div>%caption</div><div>%feat</div></div>'
+			}
+		},
+		
 		'page_items_thumbs_square' : {
 			'main' : '<div class="browser sliding-media scrollable horizontal focus"><div><!--zone:items--></div></div>',
 			'blocks' : {

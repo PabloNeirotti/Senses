@@ -384,6 +384,29 @@
 	color: #ccc;
 }
 
+.browser.list.count > div {
+	counter-reset: listcount;
+}
+
+.browser.list.count > div > div {
+	counter-increment: listcount;
+}
+
+.browser.list.count > div > div::before {
+	content: counter(listcount);
+	position: absolute;
+	top: 3px;
+	right: 15px;
+	font-size: 50px;
+	color: rgba(240, 240, 240, .4);
+	text-align: right;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, .7);
+}
+
+.browser.list.count > div > div.sel::before {
+	color: rgba(255, 255, 255, .5);
+}
+
 .browser.list > div > div + div {
 	margin-top: 5px;
 }
@@ -392,8 +415,8 @@
 	border: 1px solid rgba(156, 226, 255, 0.8);
 	box-shadow: inset 0 0 4px rgba(194, 244, 254, .6), 0 0 8px rgb(15, 99, 254);
 	color: #ffffff;
-	background-image: -webkit-gradient(linear, left bottom, left top, from(rgb(3, 34, 98)), color-stop(0.483, rgb(0, 57, 199)), color-stop(0.506, #1648fe), to(#5fc2ff));
-	background-image: -moz-linear-gradient(90deg, rgb(3, 34, 98) 0%, rgb(0, 57, 199) 48.3%, #1648fe 50.6%, #5fc2ff 100%);
+	background-image: -webkit-gradient(linear, left bottom, left top, from(rgb(3, 34, 98)), color-stop(0.48, rgb(0, 57, 199)), color-stop(0.491, #1648fe), to(#5fc2ff));
+	background-image: -moz-linear-gradient(90deg, rgb(3, 34, 98) 0%, rgb(0, 57, 199) 48%, #1648fe 49.1%, #5fc2ff 100%);
 }
 
 

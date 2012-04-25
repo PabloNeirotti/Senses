@@ -324,6 +324,7 @@ function NavigationObject() {
 							
 						case 'items_list':		// Vertical list. Used mostly for Music.
 						case 'items_list_and_sidegroup':
+						case 'items_list_count':
 							block.setvar('caption', (list[i].caption ? list[i].caption : list[i].title));
 							break;
 							
